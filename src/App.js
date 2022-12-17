@@ -6,6 +6,7 @@ function App() {
     <div>
       <h1>YEET</h1>
       <Board />
+      {/* button for adding a test */}
     </div>
   );
 }

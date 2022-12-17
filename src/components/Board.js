@@ -7,7 +7,7 @@ class Board extends React.Component {
     super(props);
     this.state = {
       tests: [
-        { id: 0, name: null, timeLimit: null },
+        { id: 0, name: "dan", timeLimit: 75 },
         { id: 1, name: null, timeLimit: null },
         { id: 2, name: null, timeLimit: null },
         { id: 3, name: null, timeLimit: null },
@@ -25,7 +25,8 @@ class Board extends React.Component {
 
   // render test function
   renderTest(i) {
-    return <Test test={this.state.tests[i]} />;
+    if (this.state.tests[i].name != null)
+      return <Test test={this.state.tests[i]} />;
   }
 
   // render function for the board
