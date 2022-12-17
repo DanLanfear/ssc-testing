@@ -5,8 +5,8 @@ function Test(props) {
   // has name of tester, time left, button to end test
   return (
     <div>
-      {props.name} {props.time}
-      <button></button>
+      {props.test.id} {props.test.name} {props.test.time}
+      <button>delete</button>
     </div>
   );
 }
