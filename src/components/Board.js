@@ -2,34 +2,40 @@ import React from "react";
 import Test from "./Test";
 
 class Board extends React.Component {
-  // constructor, which sets stat
+  // constructor
+  // sets state
   constructor(props) {
     super(props);
     this.state = {
-      tests: [
-        { id: 0, name: "dan", timeLimit: 75 },
-        { id: 1, name: null, timeLimit: null },
-        { id: 2, name: null, timeLimit: null },
-        { id: 3, name: null, timeLimit: null },
-        { id: 4, name: null, timeLimit: null },
-        { id: 5, name: null, timeLimit: null },
-        { id: 6, name: null, timeLimit: null },
-        { id: 7, name: null, timeLimit: null },
-        { id: 8, name: null, timeLimit: null },
-        { id: 9, name: null, timeLimit: null },
-      ],
+      MAX_TESTS: 20,
+      tests: Array(this.MAX_TESTS),
     };
+
+    //Fill with dummy variables for now
+    for (let i = 0; i < this.state.MAX_TESTS; i++)
+      this.state.tests[i] = {
+        id: i,
+        name: "student " + (i + 1).toString(),
+        timeLimit: "60",
+      };
   }
 
   // handleClick
 
-  // render test function
+  /**
+   * Renders one test component on the screen if it is not null
+   * @param {int} i the index of the test information in the tests array
+   * @returns a test component
+   */
   renderTest(i) {
     if (this.state.tests[i].name != null)
       return <Test test={this.state.tests[i]} />;
   }
 
-  // render function for the board
+  /**
+   *
+   * @returns a container div that has child tests if they are active
+   */
   render() {
     return (
       <div className="container">
@@ -43,6 +49,16 @@ class Board extends React.Component {
         {this.renderTest(7)}
         {this.renderTest(8)}
         {this.renderTest(9)}
+        {this.renderTest(10)}
+        {this.renderTest(11)}
+        {this.renderTest(12)}
+        {this.renderTest(13)}
+        {this.renderTest(14)}
+        {this.renderTest(15)}
+        {this.renderTest(16)}
+        {this.renderTest(17)}
+        {this.renderTest(18)}
+        {this.renderTest(19)}
       </div>
     );
   }
