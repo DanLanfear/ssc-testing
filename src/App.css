@@ -8,6 +8,11 @@
   text-align: center;
 }
 
+.test-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .main-container {
   display: grid;
   justify-items: center;
