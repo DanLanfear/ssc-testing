@@ -1,10 +1,11 @@
 import "./App.css";
 import Board from "./components/Board";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
-    <div>
-      <h1>YEET</h1>
+    <div className="main-container">
+      <h1 className="title">Student Success Center Test Monitoring</h1>
       <Board />
       {/* button for adding a test */}
     </div>

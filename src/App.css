@@ -1,16 +1,21 @@
-* {
+/* * {
   margin: 0;
   padding: 0;
   border: 0;
-}
+} */
 
 .test-entity {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-self: center;
+  justify-items: center;
+  text-align: center;
 }
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.main-board {
+  width: 100%;
+  justify-items: center;
+}
+
+.main-container {
+  display: grid;
+  justify-items: center;
 }

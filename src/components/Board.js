@@ -32,7 +32,7 @@ class Board extends React.Component {
   // render function for the board
   render() {
     return (
-      <div>
+      <div className="container">
         {this.renderTest(0)}
         {this.renderTest(1)}
         {this.renderTest(2)}
