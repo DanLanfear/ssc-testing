@@ -5,14 +5,7 @@
 } */
 
 .test-entity {
-  justify-self: center;
-  justify-items: center;
   text-align: center;
-}
-
-.main-board {
-  width: 100%;
-  justify-items: center;
 }
 
 .main-container {
