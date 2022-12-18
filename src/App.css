@@ -6,6 +6,7 @@
 
 .test-entity {
   text-align: center;
+  background-color: #f8f5ec;
 }
 
 .test-info {
@@ -16,4 +17,9 @@
 .main-container {
   display: grid;
   justify-items: center;
+}
+
+.header {
+  height: 4rem;
+  background-color: #a6093d;
 }
