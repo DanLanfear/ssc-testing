@@ -5,7 +5,7 @@ function Test(props) {
   // shows a test entity
   // has name of tester, time left, button to end test
   return (
-    <div className="row test-entity p-2 m-2 border rounded">
+    <div className="row test-entity p-4 m-2 border rounded">
       <div className="col test-info">Test ID: {props.test.id}</div>
       <div className="col test-info">Tester Name: {props.test.name}</div>
       <div className="col test-info">
