@@ -12,7 +12,7 @@ function Test(props) {
         Time Limit (Minutes): {props.test.timeLimit}
       </div>
       <div className="col test-info">
-        <Button className="delete-btn" variant="danger">
+        <Button className="delete-btn" onClick={props.onClick} variant="danger">
           End Test
         </Button>
       </div>

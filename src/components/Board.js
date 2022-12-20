@@ -17,19 +17,38 @@ class Board extends React.Component {
         id: i,
         name: "student " + (i + 1).toString(),
         timeLimit: "60",
+        active: true,
       };
   }
 
-  // handleClick
+  /**
+   * Disables a test in the boards state
+   * @param {int} i index of the test in the array
+   */
+  handleClick(i) {
+    const tests = this.state.tests.slice();
+    tests[i] = {
+      id: i,
+      name: null,
+      timeLimit: null,
+      active: false,
+    };
+
+    this.setState({
+      tests: tests,
+    });
+  }
 
   /**
    * Renders one test component on the screen if it is not null
-   * @param {int} i the index of the test information in the tests array
+   * @param {int} i the index of the test in the array
    * @returns a test component
    */
   renderTest(i) {
-    if (this.state.tests[i].name != null)
-      return <Test test={this.state.tests[i]} />;
+    if (this.state.tests[i].active)
+      return (
+        <Test test={this.state.tests[i]} onClick={() => this.handleClick(i)} />
+      );
   }
 
   /**
