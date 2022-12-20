@@ -19,7 +19,20 @@
   justify-items: center;
 }
 
-.header {
+.banner {
+  position: fixed;
+  display: grid;
+  width: 100vw;
   height: 4rem;
+  justify-items: center;
+  align-items: center;
   background-color: #a6093d;
+}
+
+.title {
+  color: white;
+}
+
+.placeholder {
+  height: 4rem;
 }
