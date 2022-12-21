@@ -58,7 +58,7 @@ class Board extends React.Component {
   render() {
     return (
       <div className="container">
-        <div className="placeholder"></div>
+        {/* <div className="placeholder"></div> */}
         {this.renderTest(0)}
         {this.renderTest(1)}
         {this.renderTest(2)}
