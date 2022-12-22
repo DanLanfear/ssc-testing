@@ -1,5 +1,5 @@
-import React from "react";
 import Button from "react-bootstrap/Button";
+import Timer from "./Timer";
 
 function Test(props) {
   // shows a test entity
@@ -9,7 +9,7 @@ function Test(props) {
       <div className="col test-info">Test ID: {props.test.id}</div>
       <div className="col test-info">Tester Name: {props.test.name}</div>
       <div className="col test-info">
-        Time Limit (Minutes): {props.test.timeLimit}
+        Time Left: <Timer time={props.test.timeLimit} />
       </div>
       <div className="col test-info">
         <Button className="delete-btn" onClick={props.onClick} variant="danger">
