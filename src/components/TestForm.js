@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
 
 function TestForm(props) {
   // shows a test entity
@@ -20,4 +19,4 @@ function TestForm(props) {
   );
 }
 
-export default Test;
+export default TestForm;

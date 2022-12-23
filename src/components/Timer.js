@@ -108,6 +108,7 @@ class Timer extends React.Component {
   }
 
   tick() {
+    //eslint-disable-next-line
     let { total, hours, minutes, seconds } = this.getTimeRemaining();
     let timeString =
       (hours > 9 ? hours : "0" + hours) +
