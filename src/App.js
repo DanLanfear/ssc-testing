@@ -1,9 +1,9 @@
+import React from "react";
 import "./App.css";
 import Board from "./components/Board";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
 // import FormModal from "./components/FormModal";
-import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [modalShow, setModalShow] = React.useState(false);

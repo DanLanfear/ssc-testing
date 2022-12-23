@@ -100,7 +100,6 @@ class Timer extends React.Component {
     const hours = Math.floor((total / 1000 / 60 / 60) % 24);
 
     return {
-      total,
       hours,
       minutes,
       seconds,
@@ -108,8 +107,7 @@ class Timer extends React.Component {
   }
 
   tick() {
-    //eslint-disable-next-line
-    let { total, hours, minutes, seconds } = this.getTimeRemaining();
+    let { hours, minutes, seconds } = this.getTimeRemaining();
     let timeString =
       (hours > 9 ? hours : "0" + hours) +
       ":" +

@@ -53,7 +53,7 @@ class Board extends React.Component {
   }
 
   /**
-   *
+   * Render function
    * @returns a container div that has child tests if they are active
    */
   render() {
