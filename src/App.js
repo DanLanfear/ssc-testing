@@ -2,7 +2,7 @@ import "./App.css";
 import Board from "./components/Board";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
-import FormModal from "./components/FormModal";
+// import FormModal from "./components/FormModal";
 import React from "react";
 
 function App() {
@@ -18,8 +18,7 @@ function App() {
           Add Test
         </Button>
       </div>
-      <FormModal show={modalShow} onHide={() => setModalShow(false)} />
-      <Board />
+      <Board modalShow={modalShow} handleClose={() => setModalShow(false)} />
     </div>
   );
 }

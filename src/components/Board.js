@@ -1,5 +1,6 @@
 import React from "react";
 import Test from "./Test";
+import FormModal from "./FormModal";
 
 class Board extends React.Component {
   // constructor
@@ -58,6 +59,10 @@ class Board extends React.Component {
   render() {
     return (
       <div className="container">
+        <FormModal
+          show={this.props.modalShow}
+          onHide={this.props.handleClose}
+        />
         {this.renderTest(0)}
         {this.renderTest(1)}
         {this.renderTest(2)}

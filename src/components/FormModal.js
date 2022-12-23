@@ -15,7 +15,7 @@ function FormModal(props) {
         <ModalTitle>New Test</ModalTitle>
       </ModalHeader>
       <ModalBody>
-        <TestForm />
+        <TestForm onSubmit={null} />
       </ModalBody>
       <ModalFooter>
         <Button onClick={props.onHide}>Close</Button>
