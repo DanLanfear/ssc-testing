@@ -52,6 +52,11 @@ class Board extends React.Component {
       );
   }
 
+  addTest(name, hours, minutes) {
+    // find the earliest index that is available
+    console.log(name, hours, minutes);
+  }
+
   /**
    * Render function
    * @returns a container div that has child tests if they are active
@@ -62,6 +67,7 @@ class Board extends React.Component {
         <FormModal
           show={this.props.modalShow}
           onHide={this.props.handleClose}
+          handleSubmit={this.addTest}
         />
         {this.renderTest(0)}
         {this.renderTest(1)}
