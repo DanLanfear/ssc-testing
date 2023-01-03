@@ -10,15 +10,21 @@ class Board extends React.Component {
     this.state = {
       MAX_TESTS: 20,
       tests: Array(this.MAX_TESTS),
+      minutes: 0,
+      hours: 0,
+      name: "",
     };
 
-    //Fill with dummy variables for now
+    this.findFirstIndex = this.findFirstIndex.bind(this);
+    this.addTest = this.addTest.bind(this);
+
+    // Fill with dummy variables for now
     for (let i = 0; i < this.state.MAX_TESTS; i++)
       this.state.tests[i] = {
         id: i,
-        name: "student " + (i + 1).toString(),
-        timeLimit: "60",
-        active: true,
+        // name: "student " + (i + 1).toString(),
+        // timeLimit: "60",
+        active: false,
       };
   }
 
@@ -52,11 +58,42 @@ class Board extends React.Component {
       );
   }
 
-  addTest(name, hours, minutes) {
-    // find the earliest index that is available
-    console.log("this is the board");
-    console.log(name, hours, minutes);
+  findFirstIndex() {}
+
+  addTest(index, name, timeLimit) {
+    const tests = this.state.tests.slice();
+    tests[index] = {
+      id: index,
+      name: name,
+      timeLimit: timeLimit,
+      active: true,
+    };
+
+    this.setState({
+      tests: tests,
+    });
   }
+
+  handleSubmit = (name, timeLimit) => {
+    // // find the earliest index that is available
+    let firstIndex = 0;
+    for (let i = 0; i < this.state.MAX_TESTS; i++) {
+      if (this.state.tests[i].active) {
+        firstIndex = i;
+        break;
+      }
+    }
+    // // calculate the time limit in minutes
+    // let timeLimit = parseInt(minutes) + parseInt(hours) * 60;
+
+    this.addTest(firstIndex, name, timeLimit);
+
+    // this.setState({
+    //   currentTest: { name: name, timeLimit: timeLimit, active: true },
+    // });
+
+    console.log("this is the board");
+  };
 
   /**
    * Render function
@@ -68,7 +105,7 @@ class Board extends React.Component {
         <FormModal
           show={this.props.modalShow}
           onHide={this.props.handleClose}
-          handleSubmit={this.addTest}
+          handleSubmit={this.handleSubmit}
         />
         {this.renderTest(0)}
         {this.renderTest(1)}

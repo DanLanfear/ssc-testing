@@ -46,6 +46,13 @@ class TestForm extends React.Component {
     this.setState({ minutes: event.target.value });
   }
 
+  buttonClick = () => {
+    let timeLimit =
+      parseInt(this.state.minutes) + parseInt(this.state.hours) * 60;
+    let name = this.state.name;
+    this.props.handleSubmit(name, timeLimit);
+  };
+
   /**
    * shows the form that the user will fill out
    * @returns the form that will house the user input
@@ -69,17 +76,7 @@ class TestForm extends React.Component {
           Minutes <br />
           <input type="number" placeholder="15" onChange={this.updateMinutes} />
         </label>
-        <Button
-          onClick={() =>
-            this.props.handleSubmit(
-              this.state.name,
-              this.state.hours,
-              this.state.minutes
-            )
-          }
-        >
-          Start Test
-        </Button>
+        <Button onClick={this.buttonClick}>Start Test</Button>
       </form>
     );
   }
