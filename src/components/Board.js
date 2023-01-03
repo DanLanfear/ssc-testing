@@ -54,6 +54,7 @@ class Board extends React.Component {
 
   addTest(name, hours, minutes) {
     // find the earliest index that is available
+    console.log("this is the board");
     console.log(name, hours, minutes);
   }
 

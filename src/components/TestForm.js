@@ -1,12 +1,15 @@
 import React from "react";
-import ReactDOM from "react";
+// import ReactDOM from "react";
 import { Form, Button } from "react-bootstrap";
 
+/**
+ * Form for retrieving information from the user on tests
+ */
 class TestForm extends React.Component {
-  // const nameInput = useRef(null);
-  // const hoursInput = useRef(null);
-  // const minutesInput = useRef(null);
-
+  /**
+   * sets state to default, and binds functions
+   * @param {*} props The props from the parent component
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -17,78 +20,38 @@ class TestForm extends React.Component {
     this.updateName = this.updateName.bind(this);
     this.updateHours = this.updateHours.bind(this);
     this.updateMinutes = this.updateMinutes.bind(this);
-    this.submitTest = this.submitTest.bind(this);
-
-    // this.nameInput = React.createRef();
-    // this.hoursInput = React.createRef();
-    // this.minutesInput = React.createRef();
   }
 
+  /**
+   * updates the state with the proper values
+   * @param {*} event
+   */
   updateName(event) {
     this.setState({ name: event.target.value });
   }
+
+  /**
+   * updates the state with the proper values
+   * @param {*} event
+   */
   updateHours(event) {
     this.setState({ hours: event.target.value });
   }
 
+  /**
+   * updates the state with the proper values
+   * @param {*} event
+   */
   updateMinutes(event) {
     this.setState({ minutes: event.target.value });
   }
 
-  submitTest(event) {
-    event.preventDefault();
-    this.props.name = this.state.name;
-    this.props.hours = this.state.hours;
-    this.props.minutes = this.state.hours;
-    // this.props.test = {
-    //   name: this.state.name,
-    //   hours: this.state.hours,
-    //   mnutes: this.state.minutes,
-    // };
-    console.log(this.state.name);
-    console.log(this.state.hours);
-    console.log(this.state.minutes);
-  }
-
-  // getFormValues() {
-  //   let nameValue = ReactDOM.findDOMNode(this.refs.nameInput);
-  //   // let hoursValue = ReactDOM.findDOMNode(this.refs.hoursInput);
-  //   // let minutesValue = ReactDOM.findDOMNode(this.refs.minutesInput);
-  //   console.log(nameValue);
-  //   // return { nameValue, hoursValue, minutesValue };
-  // }
-
-  // shows a test entity
-  // has name of tester, time left, button to end test
+  /**
+   * shows the form that the user will fill out
+   * @returns the form that will house the user input
+   */
   render() {
     return (
-      // <Form>
-      //   <Form.Group className="mb-3" controlId="formBasicName">
-      //     <Form.Label>Tester Name</Form.Label>
-      //     <Form.Control
-      //       type="text"
-      //       placeholder="John Smith"
-      //       ref={this.nameInput}
-      //     />
-      //   </Form.Group>
-
-      //   <Form.Group className="mb-3" controlId="formBasicHours">
-      //     <Form.Label>Hours</Form.Label>
-      //     <Form.Control type="number" placeholder="1" ref={this.hoursInput} />
-      //   </Form.Group>
-
-      //   <Form.Group className="mb-3" controlId="formBasicMinutes">
-      //     <Form.Label>Minutes</Form.Label>
-      //     <Form.Control
-      //       type="number"
-      //       placeholder="60"
-      //       ref={this.minutesInput}
-      //     />
-      //   </Form.Group>
-      //   <Button variant="primary" onClick={this.getFormValues}>
-      //     Submit
-      //   </Button>
-      // </Form>
       <form>
         <label>
           Name of Tester: <br />
@@ -107,11 +70,13 @@ class TestForm extends React.Component {
           <input type="number" placeholder="15" onChange={this.updateMinutes} />
         </label>
         <Button
-          onClick={this.props.handleSubmit(
-            this.state.name,
-            this.state.hours,
-            this.state.minutes
-          )}
+          onClick={() =>
+            this.props.handleSubmit(
+              this.state.name,
+              this.state.hours,
+              this.state.minutes
+            )
+          }
         >
           Start Test
         </Button>
