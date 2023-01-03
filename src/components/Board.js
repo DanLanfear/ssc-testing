@@ -10,21 +10,17 @@ class Board extends React.Component {
     this.state = {
       MAX_TESTS: 20,
       tests: Array(this.MAX_TESTS),
-      minutes: 0,
-      hours: 0,
-      name: "",
     };
 
-    this.findFirstIndex = this.findFirstIndex.bind(this);
     this.addTest = this.addTest.bind(this);
 
     // Fill with dummy variables for now
     for (let i = 0; i < this.state.MAX_TESTS; i++)
       this.state.tests[i] = {
         id: i,
-        // name: "student " + (i + 1).toString(),
-        // timeLimit: "60",
-        active: false,
+        name: "student " + (i + 1).toString(),
+        timeLimit: "60",
+        active: true,
       };
   }
 
@@ -58,8 +54,6 @@ class Board extends React.Component {
       );
   }
 
-  findFirstIndex() {}
-
   addTest(index, name, timeLimit) {
     const tests = this.state.tests.slice();
     tests[index] = {
@@ -76,23 +70,19 @@ class Board extends React.Component {
 
   handleSubmit = (name, timeLimit) => {
     // // find the earliest index that is available
-    let firstIndex = 0;
+    let firstIndex = -1;
     for (let i = 0; i < this.state.MAX_TESTS; i++) {
-      if (this.state.tests[i].active) {
+      if (!this.state.tests[i].active) {
         firstIndex = i;
         break;
       }
     }
-    // // calculate the time limit in minutes
-    // let timeLimit = parseInt(minutes) + parseInt(hours) * 60;
-
+    if (firstIndex == -1) {
+      console.log("All the tests are full");
+      return;
+    }
     this.addTest(firstIndex, name, timeLimit);
-
-    // this.setState({
-    //   currentTest: { name: name, timeLimit: timeLimit, active: true },
-    // });
-
-    console.log("this is the board");
+    this.props.handleClose();
   };
 
   /**
