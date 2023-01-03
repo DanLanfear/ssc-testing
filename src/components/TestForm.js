@@ -1,6 +1,5 @@
 import React from "react";
-// import ReactDOM from "react";
-import { Form, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 /**
  * Form for retrieving information from the user on tests

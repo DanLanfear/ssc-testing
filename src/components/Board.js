@@ -18,9 +18,9 @@ class Board extends React.Component {
     for (let i = 0; i < this.state.MAX_TESTS; i++)
       this.state.tests[i] = {
         id: i,
-        name: "student " + (i + 1).toString(),
-        timeLimit: "60",
-        active: true,
+        // name: "student " + (i + 1).toString(),
+        // timeLimit: "60",
+        active: false,
       };
   }
 
@@ -34,6 +34,7 @@ class Board extends React.Component {
       id: i,
       name: null,
       timeLimit: null,
+      endTime: null,
       active: false,
     };
 
@@ -56,9 +57,12 @@ class Board extends React.Component {
 
   addTest(index, name, timeLimit) {
     const tests = this.state.tests.slice();
+    let endTime = new Date();
+    endTime.setMinutes(endTime.getMinutes() + parseInt(timeLimit));
     tests[index] = {
       id: index,
       name: name,
+      endTime: endTime,
       timeLimit: timeLimit,
       active: true,
     };
@@ -77,7 +81,7 @@ class Board extends React.Component {
         break;
       }
     }
-    if (firstIndex == -1) {
+    if (firstIndex === -1) {
       console.log("All the tests are full");
       return;
     }

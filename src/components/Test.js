@@ -6,10 +6,16 @@ function Test(props) {
   // has name of tester, time left, button to end test
   return (
     <div className="row test-entity p-4 m-2 border rounded">
-      <div className="col test-info">Test ID: {props.test.id}</div>
+      {/* <div className="col test-info">Test ID: {props.test.id}</div> */}
       <div className="col test-info">Tester Name: {props.test.name}</div>
       <div className="col test-info">
-        Time Left: <Timer time={props.test.timeLimit} />
+        Time Left:&nbsp; <Timer time={props.test.timeLimit} />
+      </div>
+      <div className="col test-info">
+        End Time:{" "}
+        {props.test.endTime.toLocaleTimeString("en-US", {
+          timeStyle: "short",
+        })}
       </div>
       <div className="col test-info">
         <Button className="delete-btn" onClick={props.onClick} variant="danger">
