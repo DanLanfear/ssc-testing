@@ -24,6 +24,40 @@ class Board extends React.Component {
       };
   }
 
+  componentDidMount() {
+    fetch("http://localhost:5001/tests")
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          console.log(result);
+          const tests = this.state.tests.slice();
+          for (let item in result) {
+            let id = item.id;
+            console.log(id);
+            tests[id] = {
+              id: id,
+              name: item.name,
+              startTime: item.start,
+              endTime: item.end,
+              active: true,
+            };
+          }
+
+          this.setState({
+            tests: tests,
+          });
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          this.setState({
+            error,
+          });
+        }
+      );
+  }
+
   /**
    * Disables a test in the boards state
    * @param {int} i index of the test in the array
