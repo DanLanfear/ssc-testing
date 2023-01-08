@@ -4,16 +4,20 @@ import Timer from "./Timer";
 function Test(props) {
   // shows a test entity
   // has name of tester, time left, button to end test
+  let stringTime = (string) => {
+    return new Date(Date.parse(string));
+  };
+
   return (
     <div className="row test-entity p-4 m-2 border rounded">
       {/* <div className="col test-info">Test ID: {props.test.id}</div> */}
       <div className="col test-info">Tester Name: {props.test.name}</div>
       <div className="col test-info">
-        Time Left:&nbsp; <Timer time={props.test.timeLimit} />
+        Time Left:&nbsp; <Timer endTime={props.test.endTime} />
       </div>
       <div className="col test-info">
         End Time:{" "}
-        {props.test.endTime.toLocaleTimeString("en-US", {
+        {stringTime(props.test.endTime).toLocaleTimeString("en-US", {
           timeStyle: "short",
         })}
       </div>

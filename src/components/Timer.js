@@ -3,8 +3,7 @@ import React from "react";
 class Timer extends React.Component {
   constructor(props) {
     super(props);
-    let end = new Date();
-    end.setMinutes(end.getMinutes() + parseInt(props.time));
+    let end = new Date(Date.parse(props.endTime));
     this.state = { endTime: end, timeString: "" };
   }
 
@@ -17,7 +16,7 @@ class Timer extends React.Component {
   }
 
   getTimeRemaining() {
-    const total = Date.parse(this.state.endTime) - Date.parse(new Date());
+    const total = Date.parse(this.props.endTime) - Date.parse(new Date());
     const seconds = Math.floor((total / 1000) % 60);
     const minutes = Math.floor((total / 1000 / 60) % 60);
     const hours = Math.floor((total / 1000 / 60 / 60) % 24);

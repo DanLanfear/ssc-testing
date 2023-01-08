@@ -1,6 +1,7 @@
 import React from "react";
 import Test from "./Test";
 import FormModal from "./FormModal";
+import { type } from "@testing-library/user-event/dist/type";
 
 class Board extends React.Component {
   // constructor
@@ -29,16 +30,15 @@ class Board extends React.Component {
       .then((res) => res.json())
       .then(
         (result) => {
+          console.log(new Date());
           console.log(result);
           const tests = this.state.tests.slice();
-          for (let item in result) {
-            let id = item.id;
-            console.log(id);
-            tests[id] = {
-              id: id,
-              name: item.name,
-              startTime: item.start,
-              endTime: item.end,
+          for (let i = 0; i < result.length; i++) {
+            tests[result[i].id] = {
+              id: result[i].id,
+              name: result[i].name,
+              startTime: result[i].start,
+              endTime: result[i].end,
               active: true,
             };
           }
