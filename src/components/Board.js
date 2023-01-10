@@ -10,8 +10,8 @@ class Board extends React.Component {
     this.state = {
       MAX_TESTS: 20,
       tests: Array(this.MAX_TESTS),
-      // requestURL: "https://ssc-testing-oweokusdsq-uc.a.run.app",
-      requestURL: "http://localhost:5000",
+      requestURL: "https://ssc-testing-oweokusdsq-uc.a.run.app",
+      // requestURL: "http://localhost:5000",
     };
 
     this.addTest = this.addTest.bind(this);

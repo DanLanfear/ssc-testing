@@ -3,8 +3,8 @@ import React from "react";
 class Timer extends React.Component {
   constructor(props) {
     super(props);
-    let end = new Date(Date.parse(props.endTime));
-    this.state = { endTime: end, timeString: "" };
+    let endTime = new Date(Date.parse(props.endTime));
+    this.state = { endTime: endTime, timeString: "" };
   }
 
   componentDidMount() {
