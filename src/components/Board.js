@@ -16,12 +16,9 @@ class Board extends React.Component {
 
     this.addTest = this.addTest.bind(this);
 
-    // Fill with dummy variables for now
     for (let i = 0; i < this.state.MAX_TESTS; i++)
       this.state.tests[i] = {
         id: i,
-        // name: "student " + (i + 1).toString(),
-        // timeLimit: "60",
         active: false,
       };
   }
@@ -31,9 +28,12 @@ class Board extends React.Component {
       .then((res) => res.json())
       .then(
         (result) => {
-          console.log(new Date());
           console.log(result);
           const tests = this.state.tests.slice();
+          for (let i = 0; i < this.state.MAX_TESTS; i++)
+            tests[i] = {
+              active: false,
+            };
           for (let i = 0; i < result.length; i++) {
             tests[result[i].id] = {
               id: result[i].id,
@@ -68,20 +68,13 @@ class Board extends React.Component {
    * @param {int} i index of the test in the array
    */
   handleClick(i) {
-    const tests = this.state.tests.slice();
-    tests[i] = {
-      id: i,
-      name: null,
-      timeLimit: null,
-      endTime: null,
-      active: false,
-    };
-
-    this.setState({
-      tests: tests,
-    });
-
     //delete request of the id test that is clicked
+    fetch(this.state.requestURL + "/tests/" + i, {
+      method: "DELETE",
+    }).then(() => {
+      console.log("delete happened");
+      this.getTests();
+    });
     //fetch the tests again to update
   }
 
@@ -106,15 +99,15 @@ class Board extends React.Component {
       start: startTime,
       end: endTime,
     });
+
     // use fetch method to fulfill post request
-    fetch(this.state.requestURL + "/tests", {
+    fetch(this.state.requestURL + "/tests/" + index, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: reqBody,
     }).then(() => {
       this.getTests();
     });
-    // update the list with a get request
   }
 
   handleSubmit = (name, timeLimit) => {
