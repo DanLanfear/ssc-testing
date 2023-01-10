@@ -1,7 +1,6 @@
 import React from "react";
 import Test from "./Test";
 import FormModal from "./FormModal";
-import { type } from "@testing-library/user-event/dist/type";
 
 class Board extends React.Component {
   // constructor
@@ -11,6 +10,8 @@ class Board extends React.Component {
     this.state = {
       MAX_TESTS: 20,
       tests: Array(this.MAX_TESTS),
+      // requestURL: "https://ssc-testing-oweokusdsq-uc.a.run.app",
+      requestURL: "http://localhost:5000",
     };
 
     this.addTest = this.addTest.bind(this);
@@ -25,8 +26,8 @@ class Board extends React.Component {
       };
   }
 
-  componentDidMount() {
-    fetch("http://localhost:5001/tests")
+  getTests() {
+    fetch(this.state.requestURL + "/tests")
       .then((res) => res.json())
       .then(
         (result) => {
@@ -58,6 +59,10 @@ class Board extends React.Component {
       );
   }
 
+  componentDidMount() {
+    this.getTests();
+  }
+
   /**
    * Disables a test in the boards state
    * @param {int} i index of the test in the array
@@ -75,6 +80,9 @@ class Board extends React.Component {
     this.setState({
       tests: tests,
     });
+
+    //delete request of the id test that is clicked
+    //fetch the tests again to update
   }
 
   /**
@@ -89,25 +97,28 @@ class Board extends React.Component {
       );
   }
 
-  addTest(index, name, timeLimit) {
-    const tests = this.state.tests.slice();
-    let endTime = new Date();
-    endTime.setMinutes(endTime.getMinutes() + parseInt(timeLimit));
-    tests[index] = {
-      id: index,
+  addTest(index, name, endTime) {
+    // create json body for the request
+    let startTime = new Date();
+    let reqBody = JSON.stringify({
+      id: index.toString(),
       name: name,
-      endTime: endTime,
-      timeLimit: timeLimit,
-      active: true,
-    };
-
-    this.setState({
-      tests: tests,
+      start: startTime,
+      end: endTime,
     });
+    // use fetch method to fulfill post request
+    fetch(this.state.requestURL + "/tests", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: reqBody,
+    }).then(() => {
+      this.getTests();
+    });
+    // update the list with a get request
   }
 
   handleSubmit = (name, timeLimit) => {
-    // // find the earliest index that is available
+    // find the earliest index that is available
     let firstIndex = -1;
     for (let i = 0; i < this.state.MAX_TESTS; i++) {
       if (!this.state.tests[i].active) {

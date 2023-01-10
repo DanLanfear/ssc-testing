@@ -49,7 +49,11 @@ class TestForm extends React.Component {
     let timeLimit =
       parseInt(this.state.minutes) + parseInt(this.state.hours) * 60;
     let name = this.state.name;
-    this.props.handleSubmit(name, timeLimit);
+
+    let endTime = new Date();
+    endTime.setMinutes(endTime.getMinutes() + parseInt(timeLimit));
+
+    this.props.handleSubmit(name, endTime);
   };
 
   /**
