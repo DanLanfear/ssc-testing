@@ -5,6 +5,7 @@ class Timer extends React.Component {
     super(props);
     let endTime = new Date(Date.parse(props.endTime));
     this.state = { endTime: endTime, timeString: "" };
+    audio = new Audio("https://www.youtube.com/watch?v=GVAF07-2Xic");
   }
 
   componentDidMount() {
@@ -24,6 +25,7 @@ class Timer extends React.Component {
       hours = 0;
       minutes = 0;
       seconds = 0;
+      this.ding();
     }
     return {
       hours,
@@ -42,6 +44,10 @@ class Timer extends React.Component {
     this.setState({
       timeString: timeString,
     });
+  }
+
+  ding() {
+    this.audio.play();
   }
 
   render() {
