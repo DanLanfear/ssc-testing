@@ -47,7 +47,7 @@ class TestForm extends React.Component {
 
   buttonClick = () => {
     let timeLimit =
-      parseInt(this.state.minutes) + parseInt(this.state.hours) * 60;
+      parseInt(this.state.minutes) + parseFloat(this.state.hours) * 60;
     let name = this.state.name;
 
     let endTime = new Date();
