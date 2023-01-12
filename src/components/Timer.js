@@ -17,18 +17,20 @@ class Timer extends React.Component {
 
   getTimeRemaining() {
     const total = Date.parse(this.props.endTime) - Date.parse(new Date());
-    const seconds = Math.floor((total / 1000) % 60);
-    const minutes = Math.floor((total / 1000 / 60) % 60);
-    const hours = Math.floor((total / 1000 / 60 / 60) % 24);
-    if (total > 0)
-      return {
-        hours,
-        minutes,
-        seconds,
-      };
-    else return 0, 0, 0;
+    let seconds = Math.floor((total / 1000) % 60);
+    let minutes = Math.floor((total / 1000 / 60) % 60);
+    let hours = Math.floor((total / 1000 / 60 / 60) % 24);
+    if (total < 0) {
+      hours = 0;
+      minutes = 0;
+      seconds = 0;
+    }
+    return {
+      hours,
+      minutes,
+      seconds,
+    };
   }
-
   tick() {
     let { hours, minutes, seconds } = this.getTimeRemaining();
     let timeString =
