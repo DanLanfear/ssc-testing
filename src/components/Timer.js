@@ -4,8 +4,11 @@ class Timer extends React.Component {
   constructor(props) {
     super(props);
     let endTime = new Date(Date.parse(props.endTime));
-    this.state = { endTime: endTime, timeString: "" };
-    audio = new Audio("https://www.youtube.com/watch?v=GVAF07-2Xic");
+    this.state = {
+      endTime: endTime,
+      timeString: "",
+    };
+    // this.audio = new Audio();
   }
 
   componentDidMount() {
@@ -21,11 +24,11 @@ class Timer extends React.Component {
     let seconds = Math.floor((total / 1000) % 60);
     let minutes = Math.floor((total / 1000 / 60) % 60);
     let hours = Math.floor((total / 1000 / 60 / 60) % 24);
-    if (total < 0) {
+    if (total <= 0) {
       hours = 0;
       minutes = 0;
       seconds = 0;
-      this.ding();
+      // this.timerID = setInterval(() => this.ding(), 1000);
     }
     return {
       hours,
@@ -46,9 +49,9 @@ class Timer extends React.Component {
     });
   }
 
-  ding() {
-    this.audio.play();
-  }
+  // ding() {
+  //   this.audio.play();
+  // }
 
   render() {
     return <div>{this.state.timeString}</div>;
