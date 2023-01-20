@@ -13,8 +13,12 @@ function App() {
       <div className="banner">
         <h1 className="title">Student Success Center Test Monitoring</h1>
       </div>
-      <div className="add-button">
-        <Button variant="primary m-2" onClick={() => setModalShow(true)}>
+      <div className="add-button-div">
+        <Button
+          className="add-button"
+          variant="primary m-2"
+          onClick={() => setModalShow(true)}
+        >
           Add Test
         </Button>
       </div>

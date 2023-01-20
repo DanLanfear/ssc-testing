@@ -19,6 +19,10 @@
   justify-items: center;
 }
 
+.container {
+  padding-top: 4rem;
+}
+
 .banner {
   position: fixed;
   display: grid;
@@ -33,6 +37,13 @@
   color: white;
 }
 
+.add-button-div {
+  position: fixed;
+  width: 100vw;
+  margin-top: 4rem;
+  justify-items: left;
+}
+
 .add-button {
-  padding-top: 4rem;
+  padding: 12px 24px !important;
 }
