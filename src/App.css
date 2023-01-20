@@ -39,9 +39,8 @@
 
 .add-button-div {
   position: fixed;
-  width: 100vw;
   margin-top: 4rem;
-  justify-items: left;
+  justify-self: left;
 }
 
 .add-button {
