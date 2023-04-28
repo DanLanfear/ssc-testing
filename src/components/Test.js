@@ -13,6 +13,12 @@ function Test(props) {
       {/* <div className="col test-info">Test ID: {props.test.id}</div> */}
       <div className="col test-info">Tester Name: {props.test.name}</div>
       <div className="col test-info">
+        Start Time:{" "}
+        {stringTime(props.test.startTime).toLocaleTimeString("en-US", {
+          timeStyle: "short",
+        })}
+      </div>
+      <div className="col test-info">
         Time Left:&nbsp; <Timer endTime={props.test.endTime} />
       </div>
       <div className="col test-info">
